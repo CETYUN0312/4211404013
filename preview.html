@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="苡婷咖啡｜臺中市東區安靜舒適的咖啡廳，提供手沖咖啡、自製甜點、穩定 Wi-Fi 與充足插座。">
+  <title>苡婷咖啡｜臺中東區・溫暖安靜的咖啡館</title>
+  <style>
+    :root {
+      --blue: #a9c9d8;
+      --blue-dark: #5e8496;
+      --cream: #f7f3eb;
+      --gray: #687177;
+      --light-gray: #e8ecec;
+      --wood: #8b6f59;
+      --text: #344047;
+      --white: #fffdf9;
+      --shadow: 0 14px 36px rgba(63, 78, 83, .09);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--cream);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.8;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 243, 235, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(94, 132, 150, .12);
+    }
+
+    .nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      color: var(--blue-dark);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: .92rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--gray);
+    }
+
+    nav a:hover { color: var(--blue-dark); }
+
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(169,201,216,.65), transparent 30%),
+        radial-gradient(circle at 85% 75%, rgba(255,255,255,.9), transparent 34%),
+        linear-gradient(135deg, #e9f2f4 0%, var(--cream) 58%, #eef0ef 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -100px;
+      top: -90px;
+      border-radius: 50%;
+      background: rgba(139,111,89,.08);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      padding: 80px 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--blue-dark);
+      letter-spacing: .16em;
+      font-size: .8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(3rem, 8vw, 6.2rem);
+      line-height: 1;
+      letter-spacing: .08em;
+      color: #425963;
+    }
+
+    .hero p {
+      margin: 0 auto 28px;
+      color: var(--gray);
+      font-size: 1.1rem;
+      max-width: 620px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: var(--blue-dark);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(94,132,150,.2);
+    }
+
+    .button:hover { transform: translateY(-1px); }
+
+    section { padding: 92px 0; }
+
+    section:nth-of-type(even) { background: #f1f3f2; }
+
+    .section-heading {
+      margin-bottom: 40px;
+      max-width: 700px;
+    }
+
+    .section-heading .eyebrow { margin-bottom: 4px; }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: .04em;
+      color: #465860;
+    }
+
+    .lead { color: var(--gray); margin: 0; }
+
+    .about-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-copy p { margin-top: 0; color: var(--gray); }
+
+    .quote-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 34px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(94,132,150,.1);
+    }
+
+    .quote-card strong {
+      display: block;
+      color: var(--wood);
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .menu-grid,
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 28px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(94,132,150,.08);
+    }
+
+    .card h3 {
+      margin: 0 0 16px;
+      color: #4c6875;
+      font-size: 1.25rem;
+    }
+
+    .menu-item,
+    .feature {
+      padding: 12px 0;
+      border-bottom: 1px dashed #d5dcdd;
+    }
+
+    .menu-item:last-child,
+    .feature:last-child { border-bottom: 0; }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .price {
+      color: var(--wood);
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .feature-icon {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .info {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .info-box {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 24px;
+      border-left: 4px solid var(--blue);
+    }
+
+    .info-box strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #4b616a;
+    }
+
+    .contact-card {
+      background: #e4eef1;
+      border-radius: 28px;
+      padding: 42px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+      padding: 11px 17px;
+      background: var(--white);
+      border-radius: 999px;
+      color: var(--blue-dark);
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 30px 0;
+      background: #3f5057;
+      color: #eaf0f1;
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(100% - 28px, 1100px); }
+      .nav { min-height: 62px; }
+      nav ul { display: none; }
+      .hero { min-height: 72vh; }
+      section { padding: 68px 0; }
+      .about-grid,
+      .contact-grid,
+      .menu-grid,
+      .feature-grid,
+      .info {
+        grid-template-columns: 1fr;
+      }
+      .hero-content { padding: 64px 0; }
+      .card, .quote-card, .contact-card { padding: 24px; }
+      h1 { font-size: clamp(3rem, 18vw, 5rem); }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top">苡婷咖啡</a>
+      <nav aria-label="主要導覽">
+        <ul>
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#menu">菜單</a></li>
+          <li><a href="#space">空間設備</a></li>
+          <li><a href="#hours">營業資訊</a></li>
+          <li><a href="#contact">聯絡</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 1. Hero 主視覺 -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-content">
+        <span class="eyebrow">TAICHUNG · EAST DISTRICT</span>
+        <h1 id="hero-title">苡婷咖啡</h1>
+        <p>在城市裡，留一個安靜的下午。<br>手沖咖啡、自製甜點，還有適合久坐的溫暖角落。</p>
+        <a class="button" href="#contact">來坐坐 →</a>
+      </div>
+    </section>
+
+    <!-- 2. 關於我們 -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <div class="section-heading">
+            <span class="eyebrow">ABOUT US</span>
+            <h2 id="about-title">慢一點，也很好。</h2>
+          </div>
+          <p>苡婷咖啡位在臺中市東區，從臺中火車站步行約 8 分鐘。希望讓每個來到這裡的人，都能找到一個舒服、不被打擾的角落。</p>
+          <p>不論是帶著筆電工作、捧一本書發呆，或只是想喝杯好咖啡，我們準備了充足插座、穩定 Wi-Fi 與可以好好躺下來的沙發。</p>
+        </div>
+        <div class="quote-card">
+          <strong>平日下午不限時</strong>
+          <span>找個窗邊的位置，點一杯手沖，讓時間慢慢走。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 菜單 -->
+    <section id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">MENU</span>
+          <h2 id="menu-title">今天喝什麼？</h2>
+          <p class="lead">依當日豆單與甜點供應為準，歡迎到店詢問。</p>
+        </div>
+
+        <div class="menu-grid">
+          <article class="card">
+            <h3>☕ 咖啡</h3>
+            <div class="menu-item"><span>美式咖啡</span><span class="price">$100</span></div>
+            <div class="menu-item"><span>拿鐵</span><span class="price">$130</span></div>
+            <div class="menu-item"><span>手沖咖啡</span><span class="price">$160 起</span></div>
+            <div class="menu-item"><span>今日特選</span><span class="price">$180</span></div>
+          </article>
+
+          <article class="card">
+            <h3>🍵 非咖啡</h3>
+            <div class="menu-item"><span>鮮奶茶</span><span class="price">$120</span></div>
+            <div class="menu-item"><span>伯爵紅茶</span><span class="price">$100</span></div>
+            <div class="menu-item"><span>蜂蜜檸檬</span><span class="price">$110</span></div>
+            <div class="menu-item"><span>可可歐蕾</span><span class="price">$130</span></div>
+          </article>
+
+          <article class="card">
+            <h3>🍰 自製甜點</h3>
+            <div class="menu-item"><span>巴斯克乳酪蛋糕</span><span class="price">$150</span></div>
+            <div class="menu-item"><span>季節水果塔</span><span class="price">$160</span></div>
+            <div class="menu-item"><span>伯爵磅蛋糕</span><span class="price">$120</span></div>
+            <div class="menu-item"><span>今日甜點</span><span class="price">$140 起</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 空間設備 -->
+    <section id="space" aria-labelledby="space-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">SPACE & AMENITIES</span>
+          <h2 id="space-title">坐得舒服，才能待得久。</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card">
+            <span class="feature-icon">🔌</span>
+            <h3>插座充足</h3>
+            <p class="lead">座位周邊準備充足電源，筆電工作、讀書都方便。</p>
+          </article>
+          <article class="card">
+            <span class="feature-icon">📶</span>
+            <h3>Wi-Fi 穩定</h3>
+            <p class="lead">提供穩定網路，適合遠端工作、處理事情或安靜上網。</p>
+          </article>
+          <article class="card">
+            <span class="feature-icon">🛋️</span>
+            <h3>沙發可躺</h3>
+            <p class="lead">柔軟沙發留給想放鬆的人，找個舒服姿勢慢慢喝咖啡。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 營業資訊 -->
+    <section id="hours" aria-labelledby="hours-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">INFORMATION</span>
+          <h2 id="hours-title">營業資訊</h2>
+        </div>
+
+        <div class="info">
+          <div class="info-box">
+            <strong>📍 地點</strong>
+            臺中市東區<br>距離臺中火車站步行約 8 分鐘
+          </div>
+          <div class="info-box">
+            <strong>🕰️ 平日下午</strong>
+            不限時<br>適合工作、閱讀與放空
+          </div>
+          <div class="info-box">
+            <strong>☕ 咖啡</strong>
+            提供手沖咖啡<br>當日豆單歡迎到店詢問
+          </div>
+          <div class="info-box">
+            <strong>🍰 甜點</strong>
+            自製甜點每日供應<br>品項依當日狀況調整
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 聯絡與行動 -->
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div>
+          <div class="section-heading">
+            <span class="eyebrow">COME BY</span>
+            <h2 id="contact-title">今天，來喝一杯吧。</h2>
+            <p class="lead">一個人也好，帶著電腦也好。找個位置坐下，讓下午慢下來。</p>
+          </div>
+
+          <div class="contact-links">
+            <!-- 將下方電話改成店家實際電話即可 -->
+            <a href="tel:+886400000000">📞 04-0000-0000</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=%E8%87%BA%E4%B8%AD%E5%B8%82%E6%9D%B1%E5%8D%80" target="_blank" rel="noopener">📍 開啟 Google Maps</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <strong>苡婷咖啡</strong>
+          <p>臺中市東區<br>臺中火車站步行約 8 分鐘</p>
+          <p>☕ 手沖咖啡　🍰 自製甜點<br>📶 穩定 Wi-Fi　🔌 充足插座</p>
+          <a class="button" href="https://www.google.com/maps/search/?api=1&query=%E8%87%BA%E4%B8%AD%E5%B8%82%E6%9D%B1%E5%8D%80" target="_blank" rel="noopener">導航到店</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 苡婷咖啡 · 在臺中東區，留一個安靜的下午。</div>
+  </footer>
+</body>
+</html>
